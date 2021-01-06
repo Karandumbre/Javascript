@@ -1,0 +1,377 @@
+1. Call
+
+Attaches function to the obj temporarly and runs the function
+
+Example 1: 
+            var obj = {
+                num: 3
+            }
+
+            var addToThis = function(a){
+                return this.num + a
+            }
+
+            addToThis.call(obj, 3);
+
+Example 2:         
+
+            var obj = {
+                num: 3
+            }
+
+            var addToThis = function(a, b, c){
+                return this.num + a + b + c
+            }
+
+            addToThis.call(obj, 1, 2, 3);
+
+
+2. Apply 
+
+Similar to the call method, accept it takes array for the second argument
+
+example 1: 
+
+            var obj = {
+                num: 3
+            }
+
+            var addToThis = function(a, b, c){
+                return this.num + a
+            }
+
+            var arr = [1, 2, 3];
+
+            addToThis.apply(obj, arr);
+
+
+3. bind
+Bind gives you a function
+            var obj = {
+                num: 3
+            }
+
+            var addToThis = function(a, b, c){
+                return this.num + a
+            }
+
+            var arr = [1, 2, 3];
+
+            var bound = addToThis.bind(obj, arr); ----------> Return a function
+
+            No need to give the actual argument as you can give the argument in the returned function
+
+            bound(1,2,3,4) -------------->  arguments when calling the bound function
+
+Call, Apply, Bind
+
+            var obj = {
+                num: 3
+            }
+
+            var functionName = function(arg1, arg2, ....){
+               .....
+            }
+
+            functionName.call(obj, arg1, arg2...)
+
+            functionName.apply(obj, [arg1, arg2...])
+
+            var bound = functionName.bind(obj)
+
+            bound(arg1, arg2, ....)
+
+
+Example of Call 
+
+            var mammal = function(legs) {
+                this.legs = legs
+            }
+
+
+            var cat = function(legs, isDomesticated){
+                mammal.call(this, legs);
+                this.isDomesticated = isDomesticated
+            }
+
+
+            var lion = new cat(4, false)
+            console.log(lion)
+
+
+Apply:  Spreads the array into number of arguments
+
+            var arr = [1, 2, 3];
+
+            Math.min.apply(null, arr);
+
+Bind: 
+
+            let obj = {
+                    asyncGet(cb) {
+                        cb();
+                    },
+                    parse(){
+                        console.log('Parse Called')
+                    },
+                    render(){
+                        this.asyncGet(function(){
+                            this.parse();
+                        }.bind(this))
+                    }
+                }
+
+            obj.render()
+
+
+Difference between class and function
+
+            Class cannot be invoked without new operator
+
+            By default all code excutes in strict mode in classes
+
+            Any property  in class method are non enumerable, cannot iterate method in classes
+
+            Class user {
+                function sathi () {
+
+                }
+            }
+
+            Sathi will not be available on user.prototype in class syntax
+
+
+Throttling: Limiting the function call or function execution
+
+Local storage: Can store upto 5mb of data.
+                All the caching data or the general data can be store in Local Storrage
+
+Session Storage: Session Related data is stored
+
+Cookie: Less in storage.
+        Data which sent with every network call is stored
+
+Preflight Request: Making any api call, browser makes a preflight request with some headers. 
+                    Server then verifies it these data is valid or not.
+                    Once the are validated, server again send some additional headers to the frontend
+                    After that the actual api call is made.
+
+
+Async script tag
+
+Defer script tag
+
+Loading of script two: 
+    1. Fetching script from Network
+    2. Executing script line by line
+
+Normal Script Tag:
+
+<----- Html parsing ---->                                                                                               <------ HTML Parsing Continues ------->
+                         <-- Encounters Script Tag, Fetch from Network, Loads it ----><--- Executes the script Tag ---->    
+
+Script Tag with Async attribute { Async does not gaurantee execution order of scripts. If put in multiple scripts}
+
+<---------------------- Html parsing ------------------------------->|                                  |<------ HTML Parsing Continues ------->
+        <-- Encounters Script Tag, Fetch from Network, Loads it ---->|<--- Executes the script Tag ---->|   
+
+Script Tag with Defer attribute
+
+<---------------------- Html parsing goes on till HTML parsing is completed ------------------->|                            
+        <-- Encounters Script Tag, Fetch from Network, Loads it ---->                           <--- Executes the script Tag ---->|
+
+
+Transpiler: (Tracuer And Babel)
+        Taker the ES2015 code and generates ES5 code
+
+ES6 {
+    let, const, Arrow Functions, Default Function Parameters, Rest and Spread Operator, Object Literal return {firstNAme} instead of {firstNAme:Firstname}
+    Destructuring Objects, String Template, for of Loop, Class
+}
+
+ES7 {
+
+    ** - Exponential
+    includes
+    Object.values and Object.entries
+    padStart and padEnd
+    Object.create method, with function keyword, with object literal and class keyord
+    Object.getOwnPropertyDescriptors()
+}
+
+ES8 {
+
+    trailing commas,
+    async await
+}
+
+ES2020 {
+    MaxSafeInteger
+    Dynamic Imports
+    Nullish Coalescing
+    Optional Chaining
+    Promise.allSettled
+}
+
+Object ha properties= Writable, Enumerable and Configurable
+
+(Same Origin Policy: Host: flipkart.com Protocol: http Port: 8080)
+
+
+
+Flatten Object Array
+
+ Score, closure, browser level optimization, minesweeper game.   
+
+Compilation wont add new properties to the function but the polifils will do.
+
+1)Box-model positions based , one box at top and other box should in right bottom in a container
+2)reverse a string
+3)anagrams question, to print anagrams in a array of strings
+4)constructor definition, closure defiition
+5)what is meant by protocall
+6)call bind apply methods with examples
+7)how to pass data from child to parent component
+8)how to fetch data from api in javascript
+9) form validation for first name , last name only strings are accepted not numbers
+10)adding a node in linkedlist
+11)const let var output questions
+12)prototypical inheritance example based question
+13)connect in react
+14)closures related question multiply(1)(2)(3)
+15)how will u design bootstrap, how grid works, sm-6 xm-6 means what ?
+16)array.push and array.multiply methods implement in a given array   
+    Core JavaScript concepts like Hoisting, Closure, Prototype  inheritance etc
+
+
+Questions on ReactJS and Redux like component lifecycle, project disscussion and state management etc.  
+
+Question like find minimum number of platforms to take all trains, sort arrays of 0 and 1
+
+Polyfills for Es6 functions like Object.assign(), Map, few simple codes like,
+Reverse every word of a String. ex- "Hello World" -> "olleH dlroW".
+Currying and implementation for func()()().. 
+
+
+Interview Questions
+
+    Create a function
+
+    Given Input
+    sum(1)(2)(3)(4)();
+
+    Desired Output
+    10  
+    1 Answer
+    How WebPack detect the dead code that can help in Treeshaking ?  
+    1 Answer
+    Difference between calling a normal function and with new keyword?  
+    Answer Question
+    How to make a function that will check if it is called with new keyword or a normal function?  
+    1 Answer
+    Difference between undefined and not-defined ?   
+
+
+    Interview Questions
+
+    implement queue using stack  
+    Answer Question
+    wap for doubly linked list  
+    Answer Question
+    OSI TCP model  
+    Answer Question
+    join two table  
+    Answer Question
+    third highest value from table  
+    Answer Question
+    concatenation  
+    Answer Question
+    group concatenation  
+    Answer Question
+    implement sorting for comma seperatd values in string array   
+
+
+    Interview Questions
+
+    JS fundamentals (OOJS, prototypal inheritance, closures, promises, ES6 features, output type questions, etc.)
+
+    Angular concepts, VueJS concepts, etc
+
+    few HTML CSS questions (box model, positioning, etc)
+
+    browser concepts like async vs defer, how to optimize and preload images, etc.
+
+    1 logic question - how to return 2 indices from an array such that the sum of their corresponding elements is equal to a specified number?   
+
+
+    Interview Questions
+
+    First round:
+    1. Vertically and horizontally align an item using only css? (ans:- transform: translate(-50%, -50%), there are many ways to answer this ques but interview keeps looking for this answer)
+
+    2. Box model and Box sizing
+
+    3. Ways of creating objects in JS
+
+    4. What is a closure?
+
+    5. How does the bootstrap grid work?
+
+    6. CSS specificity rules
+
+    Second round:
+    1. null == undefined; //true or false?
+
+    2. null === undefined; //true or false?
+
+    3. Many ques were the same from the 1st round with slight variations in framing the question.
+
+    Third round:
+    1. To write a code on paper, question based on arrays
+
+    2. Improving the solution to reduce time complexity.
+
+    3. To write jQuery code for a given animation
+
+    4. What happens once you enter url into browser?
+
+    Fourth round:
+    1. What happens once you enter url into browser?
+
+    2. General questions on OS, Networking
+
+    3. As per my experience, final round was more of a behavioral round.   
+
+
+    Round 2:Face to face(1.5HR)
+
+This round interviewer was very humble.
+
+    Tell me about yourself. :p Mandatory question
+    He started with my project discussions, asked me to explain any project, and deep discussion on that project.
+    He asked questions on JS concepts like hoisting, Promises, async/await, Closures, Prototypes, Prototypal inheritance.
+    After these concepts he gave me one question – sum(1)(2)(3)(4)……..(n) which uses the concept of closures and recursion.
+    He also asked about functional programming, PWA concepts like service and web workers, indexedDB, Websql, Client side storage techniques, their usage i.e. when to use what and differences b/w them.
+    Debouncing and Throttling code was also asked.
+    Also some DS questions were also asked like Find loop in linked list, given a string of parentheses – find the string which is balanced or not or some basic questions on trees like lca, left, right, top and bottom view of binary tree.
+
+Round 3:Face to face(45mins)
+
+This round interviewer was very knowledgeable and calm.
+
+    Tell me about yourself. :p Mandatory question
+    One algo question was asked which uses some core Js concepts like prototypes and the JS methods which i used here then he asked me to right there polyfills. We start from O(n^2) time complexity and then with subsequent discussions reach to O(n).
+    He asked about what are closures and what are there practical usages in real life. One question was asked on this was write a function using which i can perform two operations ie getting the latest count and also using that function to increment the count.
+    then he asked an output question which uses string immutability concept in JS.
+
+Round 4:Face to face(40mins)(Hiring Manager Round)
+
+    Tell me about yourself. :p Mandatory question
+    He started with my project discussions, asked me to explain any project, and deep discussion on that project.
+    Asked me about JS design patterns i have used and implemented. For every design pattern i named he asked me to write working code for it.
+    Write a code to reverse a linked list.
+    Modified the above question to reverse the linked in given k group size.
+    Asked me about directives. digest cycle, dependency injection in angular.
+    Diff b/w $apply and $digest.
+    What is http2 and diff b/w its previous version i.e. http1.1.
+    PWA and its concepts.

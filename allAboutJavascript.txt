@@ -1,0 +1,23 @@
+Execution Context:
+
+    Everything in javascript happens insdie the execution context.
+    Its like a box in which whole javascripot is executed
+
+    It has two components in it
+    1. Memory component (Known as variable environment)
+        * All the variables and functions are stored in form of key value pair
+
+    2. Code component (Known as Thread of Execution)
+        * Where code is executed line by line
+
+
+Javascript Single Threaded and Syncronous Language 
+It can execute one command at a time and in a specific order
+
+
+* What happens when you run javascript code ?
+-> Global Execution context is created
+    * Execution Context is created in two phases
+        a. Memory Creation Phase
+            
+        b. Code Execution Phase
