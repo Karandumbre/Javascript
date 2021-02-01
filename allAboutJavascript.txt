@@ -21,3 +21,110 @@ It can execute one command at a time and in a specific order
         a. Memory Creation Phase
             
         b. Code Execution Phase
+
+* Shortest Program in Javascript:
+      Empty JS file (i.e no program)
+      
+* What is window Object ?
+
+    It is Object which created by javascript along with the global execution context
+    All javascript engines responsibilities is to create this global object
+    As google chrome and web browsers it is known as "window" object, in case of node it is known as global object
+    
+    Whenever you create a function or variable which is not inside any function, it is in the GLobal Space
+    
+    example: index.js
+    
+    var a = 100;
+    
+    function b() {
+        var x = 10;
+    }
+    
+    console.log(window.a)
+    console.log(a)
+    console.log(x)
+
+    
+    and whenever you create a variable or function inside global space it gets attached to the global object ("Window")
+    
+    So in above code, when you will se 100 as output instead you are only using console.log(a).
+    Javascript assume that you want to access something from global space and it will print.
+    
+    But when you try to access something which is not in global space you will get an error
+    
+ * Javascript is a looosely typed language means it does not attaches any specific type to a variable
+ 
+    For example if any variable it contains string, you can assign number or object in later stages
+    
+    
+ Undefined: 
+ 
+    Its just a placeholder. I means in the whole it was not assigned anything so the value is undefined
+    
+ 
+* The Scope Chain, Lexical Environment
+
+    Understand with an example
+    
+    1. function b() {
+        console.log(a);
+    }
+    
+    var a = 20;
+    
+    b();
+    
+    
+    In the above example, Javascript will try to find "a" in the local scope, i.e in the function b();
+    As it is not present in local scope it will then go to the parent scope to find "a" (which in this scope is the global scope)
+    And it will print 20
+
+
+     
+   2. function b() {
+    var a = 20;
+    c();
+       function c(){
+        console.log(a);
+       }
+    }
+    
+    
+    b();
+    
+    In the above scenorio, it will be able to aceess 'a' as it is in the parent scope of function "c"
+    
+    3. function b() {
+       var a = 20;
+
+       c();
+       function c(){
+       }
+    }
+    
+    
+    b();
+    console.log(a);
+    
+    In the above program, it will give error as it is not present in the global space
+    
+    
+    *** Scope: Is where you access a variable or a function inside the code *** 
+    
+ *Lexical Environment
+    
+    Whenever Execution context is created a lexical envrionemnt is also created. Lexical envrionemnt is the local memory along with lexical environment of its         parent
+    
+    Lexcial means in hierarchy or in sequence
+    
+    
+    function b() {
+       var a = 20;
+
+       c();
+       function c(){
+       }
+    }
+    
+    so in above example, i can say that "c" is sitting lexcically inside "b" function
