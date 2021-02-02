@@ -192,3 +192,86 @@ Shadowing:
     Declaring same name variable in different scope is known as shadowing 
 
 
+Closure:
+    Function alon with its lexical scope known as closure. Or Function bundled together with its lexical environment
+    
+    function x() {
+        let a = 10;
+        
+        function y() {
+            console.log(a)
+        }
+        
+        return y;
+    }
+    
+    var z = x();
+    
+    z();
+    
+    HEre in the above example, z will print 10 as closure comes with the lexical environment, which means all the variables inside function x are present in lexical environment of y
+    
+    
+    function x() {
+        let a = 10;
+        
+        function y() {
+            console.log(a)
+        }
+        
+        a = 100;
+        return y;
+    }
+    
+    var z = x();
+    
+     z();
+   
+    The above example will print 100 as console.log(a) is not pointing to a = 10, but it is pointing to reference of variable 'a'
+    
+    Examples:
+    
+    SetTimeOut
+    Iterators
+    Memoise
+    Function like once
+    
+    
+    Settimeout and closures
+    
+    function x(){
+        for(var i = 1; i <=5; i++) {
+            setTimeout(()=> {
+                console.log(i)
+            }, i * 1000)
+        }
+    }
+  
+    In the above scenario, javascript will loop through the for loop, creates 5 function and attaches timer to it and i will point to the same reference of var i so at the end it will print 6 6 6 6 6
+    
+    To solve this problem we can use let.
+    
+     function x(){
+        for(let i = 1; i <=5; i++) {
+            setTimeout(()=> {
+                console.log(i)
+            }, i * 1000)
+        }
+    }
+    
+    And another way is the closure
+    
+     function x(){
+        for(var i = 1; i <=5; i++) {
+          function close(i){
+               setTimeout(()=> {
+                    console.log(i)
+                }, i * 1000)
+          }
+           close(i)
+        }
+    }
+    
+    
+  
+  
