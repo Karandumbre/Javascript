@@ -114,7 +114,7 @@ It can execute one command at a time and in a specific order
     
  *Lexical Environment
     
-    Whenever Execution context is created a lexical envrionemnt is also created. Lexical envrionemnt is the local memory along with lexical environment of its         parent
+    Whenever Execution context is created a lexical envrionemnt is also created. Lexical envrionemnt is the local memory along with lexical environment of its parent
     
     Lexcial means in hierarchy or in sequence
     
@@ -128,3 +128,67 @@ It can execute one command at a time and in a specific order
     }
     
     so in above example, i can say that "c" is sitting lexcically inside "b" function
+
+
+** Let And Const Variable ** 
+
+1. Let and Const variable are hoisted but very different way then var as they are in temporal dead zone for time being
+
+a ->  when you declare a variable using let or const keyword, value of undefined is attached to it and unlike "var" keyword declaration they are stored in different memory space than global
+b. -> Temporal Dead Zone -> is the time when variable is hoisted till a value is assigned to it
+If a variable is inside temporal dead zone, you cannot access it until a value is initialised to the variable
+
+
+Difference between Type Error, Syntax Error and Reference Error
+
+Type Error: example const a = 10;
+
+    a = 100;
+    
+    It will give error as "a" was of type const and cannot be assigned a value
+    
+ Syntax Error:
+ 
+     Let b = 100;
+
+     Let b = 1;
+
+     the above code will give syntax error, as let variable is declared and again declared a variable with same name
+     
+     example 2 :
+     
+     const b; -> this will give syntax error as const variable need to be initialised
+     
+  Reference Error:
+  
+    When javascript want to access something which is not present or is not accessible to the function that time we get reference error
+    
+  
+  Block : Whatever is inside {} (curly braces) is a block
+           Block is also known as a compound statement
+           Used to combine multiple javascript statements in one group
+           These groups can be used where javascript expects only one statement
+           
+           For eg:
+           
+           if(true) true <- where true is the single statement
+           
+           if(true) {
+           
+            let a = 100
+            console.log(a)
+            
+            }
+            
+Shadowing:
+    var a = 10;
+    {
+        var a = 100;
+        console.loG(100); // gives 100
+    }
+  
+    console.log(a) // give 100 ----> this is known as shadowing. They will print same as they both are in same scope
+    
+    Declaring same name variable in different scope is known as shadowing 
+
+
