@@ -18,3 +18,20 @@ var flattenArray = (data) => {
 };
 
 console.log(flattenArray(a));
+
+// const arr = [1, 3, [7, 6, 8, 9, [4, 5, 6], 2]];
+
+// const flattenedArray = [];
+
+// const flattenArray = (arr) => {
+//   arr.forEach((element) => {
+//     if (Array.isArray(element)) {
+//       flattenArray(element);
+//     } else {
+//       flattenedArray.push(element);
+//     }
+//   });
+//   return flattenedArray;
+// };
+
+// console.log(flattenArray(arr));

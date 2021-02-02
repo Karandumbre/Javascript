@@ -213,7 +213,7 @@ ES2020 {
     Promise.allSettled
 }
 
-Object ha properties= Writable, Enumerable and Configurable
+Object has properties= Writable, Enumerable and Configurable
 
 (Same Origin Policy: Host: flipkart.com Protocol: http Port: 8080)
 

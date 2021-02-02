@@ -1,6 +1,8 @@
+Brandon Eich - Creator of Javascript
+
 Execution Context:
 
-    Everything in javascript happens insdie the execution context.
+    Everything in javascript happens inside the execution context.
     Its like a box in which whole javascripot is executed
 
     It has two components in it
@@ -48,7 +50,7 @@ It can execute one command at a time and in a specific order
     
     and whenever you create a variable or function inside global space it gets attached to the global object ("Window")
     
-    So in above code, when you will se 100 as output instead you are only using console.log(a).
+    So in above code, you will see 100 as output instead you are only using console.log(a).
     Javascript assume that you want to access something from global space and it will print.
     
     But when you try to access something which is not in global space you will get an error
@@ -60,7 +62,7 @@ It can execute one command at a time and in a specific order
     
  Undefined: 
  
-    Its just a placeholder. I means in the whole it was not assigned anything so the value is undefined
+    Its just a placeholder. It means that in the whole code the variable was not assigned anything so the value is undefined
     
  
 * The Scope Chain, Lexical Environment
@@ -100,6 +102,7 @@ It can execute one command at a time and in a specific order
 
        c();
        function c(){
+           console.log(a)
        }
     }
     
@@ -110,9 +113,9 @@ It can execute one command at a time and in a specific order
     In the above program, it will give error as it is not present in the global space
     
     
-    *** Scope: Is where you access a variable or a function inside the code *** 
+******* What is Scope: Is where you access a variable or a function inside the code *** 
     
- *Lexical Environment
+**** Lexical Environment *******
     
     Whenever Execution context is created a lexical envrionemnt is also created. Lexical envrionemnt is the local memory along with lexical environment of its parent
     
@@ -130,7 +133,7 @@ It can execute one command at a time and in a specific order
     so in above example, i can say that "c" is sitting lexcically inside "b" function
 
 
-** Let And Const Variable ** 
+****** Let And Const Variable ******
 
 1. Let and Const variable are hoisted but very different way then var as they are in temporal dead zone for time being
 
@@ -139,7 +142,7 @@ b. -> Temporal Dead Zone -> is the time when variable is hoisted till a value is
 If a variable is inside temporal dead zone, you cannot access it until a value is initialised to the variable
 
 
-Difference between Type Error, Syntax Error and Reference Error
+******** Difference between Type Error, Syntax Error and Reference Error Start ********
 
 Type Error: example const a = 10;
 
@@ -147,7 +150,7 @@ Type Error: example const a = 10;
     
     It will give error as "a" was of type const and cannot be assigned a value
     
- Syntax Error:
+Syntax Error:
  
      Let b = 100;
 
@@ -159,26 +162,28 @@ Type Error: example const a = 10;
      
      const b; -> this will give syntax error as const variable need to be initialised
      
-  Reference Error:
+Reference Error:
   
     When javascript want to access something which is not present or is not accessible to the function that time we get reference error
     
-  
-  Block : Whatever is inside {} (curly braces) is a block
-           Block is also known as a compound statement
-           Used to combine multiple javascript statements in one group
-           These groups can be used where javascript expects only one statement
+******** Difference between Type Error, Syntax Error and Reference Error End ********
+
+
+What is Block : Whatever is inside {} (curly braces) is a block
+        Block is also known as a compound statement
+        Used to combine multiple javascript statements in one group
+        These groups can be used where javascript thats expects only one statement
            
-           For eg:
+        For eg:
            
-           if(true) true <- where true is the single statement
+        if(true) true <- where true is the single statement
            
-           if(true) {
+        if(true) {
            
             let a = 100
             console.log(a)
             
-            }
+        }
             
 Shadowing:
     var a = 10;
@@ -192,8 +197,7 @@ Shadowing:
     Declaring same name variable in different scope is known as shadowing 
 
 
-Closure:
-    Function alon with its lexical scope known as closure. Or Function bundled together with its lexical environment
+********* Closures Start **********
     
     function x() {
         let a = 10;
@@ -272,6 +276,310 @@ Closure:
         }
     }
     
+
+Advantages of using Closures
+    As we all know variables which we create inside function have local scope and only accessible in side the function not outside the function.
+    Problem 1: Also variable defined inside the function created when we call function and destroyed with function close. 
+    We can define global variables which are created when program starts till the end of program and are accessible any where in the program.
+    Problem 2: If we define the global variable these can be changed any where in program.
+    Solution :
+    Data Encapsulation
+    we can overcome above problems by using closures.
+    1. By using a closure we can have private variables that are available even after a function task is finished.
+    2. With a function closure we can store data in a separate scope, and share it only where necessary.
+
+Disadvantages of using Closures
+    Closures not only have advantages it also have disadvantages. 
+    If you are using closures there are two disadvantages which you need to take care while using.
+    As long as the closure are active , the memory can’t be garbage collected.
     
+    example : If we are using closure in ten places then unless all the ten process complete it hold the memory which cause memory leak.
+    How to fix this?
+    
+    If there come a point in you program where you are done using closure then you need to set closure to null.
+    Creating a function inside a function leads to duplicity in memory and cause slowing down the application.
+    How to fix?
+    Use closures only when you need privacy otherwise use module pattern to create new objects with shared methods.
+
+********* Closures End **********
+
+* What is Function Statement also known as function declaration
+    
+    function a() {
+    
+    }
+    
+* Function Expresson
+
+    Functon acts as a value
+    
+    var a = function () {
+    
+    }
+    
+    Major difference between these two is hoisting.
+
+* Anonymous Function
+
+    A function without a name is known as anonymous function
+
+    they are used in a place where functions are used as a value
+
+* Named Function Expression
+
+    var a = function b() {
+
+        }
+    When we use named function to assign to a variable
+
+    a() // outputs the value
+    
+    b() // gives reference error that b is not defined. Because b is created in outerscope but it is refered as a value
+    
+ 
+ 
+ * Difference between parameters and arguments
+
+     function xyz(param1, param2) {
+
+     }
+
+     xyz(arg1, arg2)
+     
+ * What are first class functions
+ 
+    the ability to use function as values is known as First class function
+    Which makes function as FIRST CLASS CITIZENS IN JAVASCRIPT
   
-  
+
+
+***** Callback Fnctions And event Listeners ****
+
+Callback Function :
+
+    Passing a function inside a function call is know as callback function.
+
+    Example:
+
+    function x() {
+
+    }
+
+    x(function y(){         // Function y is known as callback function
+
+    })
+
+    Why it is known as callback function ?
+
+    * Because you handed the responsibility of execution of function y to function x.
+
+    * Inside function x it can excute at any time
+
+Blocking of main thread ?
+
+    Everything in javascript happens in call stack.
+    Where javascript executes line by line. And javascript has only one thread which excues these operations which is known as main thread.
+    So blocking of main thread means :
+        Example - 
+            If there is a operation which is taking to much time to execute, then all the below operations which are after this operation
+            will be blocked. 
+            This is known as blocking of main thread.
+            So to avoid this, we should always use callback functions which operations take time to execute.
+
+Deep About event Listeners 
+
+    When we attaches a event Listener to a button click, so every time a button is clicked, the function is pushed to call stack
+
+    document.getElementById('<any-id>').addeventListener('click', function xyz(){
+        console.log('Button clicked')
+    })
+
+    So every time a button is clicked, the above xyz function is pushed into the call stack.
+
+Garbage Collection and removeEventListener 
+    1. Event Listeners are heavy which takes memory and forms a closure and even when the call stack is empty
+    2. Suppose our page has thousands of buttons and thausands of event listener because of which the page becomes unresponsive
+
+
+Asyncronous:
+
+    Javascript is a Syncronous single threaded language. And one callstack. It can only do one thing at a time.
+    Call stack is present inside the javascript engine.
+
+
+    Web Api :
+
+        SetTimeout,
+        Localstorage,
+        Fetch,
+        Dom API,
+        Console
+        Location
+
+    Example
+
+    console.log("start");
+
+    setTimeout(() => {
+    console.log("inside timer");
+    }, 5000);
+
+    console.log("end");
+
+
+    Output // 
+    Start
+    End
+
+    And after 5sec "inside timer" will get printed
+
+    This happens because of event loop and callback queue
+
+    Callback queue has list of non executed queue. as soon as main thread has finished execution, event loop pass on the next task to the main thread
+    (i.e push the next task in the call stack) and is executed 
+
+    Event loop check inside the call back queue. If there is callback
+
+    In the Web API, callback will be registered whenever there is eventlistener
+    Whenever an eventlistener is there. It attaches a callback method with the event exmaple click event
+
+    The above eventlistener will remain the web api environment until we remove it explicitly or close the browser
+
+** event loop -> 
+    Its job is to continously monitor the callstack and the callback queue.
+
+Mirco Task queue.
+    Has higher priority over callback queue.
+
+    Fetch function or promises are put into this queue
+
+    All the functions which comes through promises goes into the microtask queue.
+
+    As well as the mutation observer (Checks for mutation happening in the dom tree) come under microtask queue
+    
+    For example :
+
+    console.log('start');
+
+    setTimeout(()=> {
+        console.log('Timer)
+    }, 5000)
+
+    fetch(<url>).then(() => {
+        console.log('Fetched the data);
+    })
+
+    // Before console.log('end') we have 10000 of lines of code.
+    console.log('end');
+
+
+    Execution Begins:
+
+    // Output
+        Start
+
+        Then main thread will go to setTimeout, and SetTimeOut starts execute, in the mean time, main thread moves to the next line.
+        Then again we have the fetch function, it will start executing.
+
+        And main thread will move forward, as main thread wait for no one. 
+
+        Now till the time javscript thread is executing the 10000 lines of code, say the timer is over and fetch function we recieeve the data.
+        Then the Timer is sent to the Call back queue and Fetch is sent to Mirco Task queue
+
+
+        Now event loop will continously monitor the callstack if it has anything to execute and schedule microtask queue and the call back queue.
+
+        Once the last line is executed, 
+        
+        End
+
+        the event loop takes the microtask queue and puts the into the call stack.
+
+        after that it takes tasks of callback queue and puts into the call stack.
+
+
+Javascript Runtime Environment 
+
+    So to run a javascript code, we require a JS engine. 
+    And it also have set of API's to connect to the outer environment. (For eg: SetTimeOut, Localstorage, Navigator etc which are browser specific)
+    We have event loop, microtask queue, task queue.
+    These all the above things inside a container.
+
+    And JS engine is the heart of Javascript Runtime environment
+    Every browser has the runtime environment and node has its own JS Environment.
+
+All About JS Engine
+
+    Javascript engine is not a machine. 
+    Its a code written in low level languages as c++ which takes high level code and convert it to the machine level code
+
+                JS Engine
+                    |
+                    |
+            It Takes the Code
+                    |
+                    |
+                    |
+                    |
+            Step 1 : Parsing
+            *   During parsing phase, code is broken down into tokens.
+                Ex: Let c = 100;
+                    where let -> token, c -> token, = -> token, 100 -> token and so on
+            *   Syntax Parser -> It takes the code and converts it into AST (Abstract Syntax Tree)
+                And then AST is passed to Compilation phase
+                   AST (astexplorer.net)
+                    |
+                    |
+                    |
+            Step 2: Compilation
+
+            What is a Interpreter ?
+                -> It takes the code and starts executing line by line.
+                -> And is not aware that what will happen in the next line.
+                -> Advantages - Immediately starts executing as it does not wait for code to compile first
+
+            What is a compiler ?
+                -> The whole code is compiled even before executing.
+                -> This code is compiled and transforms in a optimise version of the code.
+                -> The new code runs fast at is has lot of performance improvements
+                -> Advantages ->  We have more efficiency
+                Compiles does inlining, copy elision, inline caching
+
+            Is JS interpreted or compiled language ?
+
+            -> Javascript behaves like a interpreted language as well as compiled language.
+            -> It depends on the JS engine.
+            -> Initially it was interpreted language, as it was supposed to run on browsers. As browser can not wait for the compilation process
+            -> But now modern browsers uses both interpreter as well a compiler together.
+            
+
+            * JIT compilation: 
+            ->  So JIT is nothing but combination of both Interpreter and a compiler 
+            -> It uses both interpreter and a compiler to execute the code.
+
+            
+            * Interpreter converts our high level code to the byte code for the excution step, 
+            and whiling doing this it takes the help of compiler to optimise the code 
+            * And Compiler optimise the code at runtime.
+            
+            * We Also have AOT -> which means it takes some part of code which is to executed as later phase and compiles it, and generates the byte code.
+
+                    |
+                    |
+                    | 
+                     
+            Step 3: Execution
+
+            Execution Phase is not possible without the 2 components
+            a. Memory Heap
+                this is the place where all the memory is stored. Where all the variables and functions are assigned memory
+                So it is constantly in sync with the call stack, garbage collector and lot of other things
+            b. Call Stack
+                where functions come in and executes and then pops out.
+
+            c. Garbage Collector (Mark and Sweep Algorithm for clean up):
+                It tries to free memory whenever possible 
+
+critical rendering path
+
+synthetic events in react
