@@ -24,3 +24,4 @@ function abbreviateString(str) {
 // });
 
 console.log(abbreviateString("Hacktober Fest"));
+console.log(abbreviateString("October Fest"));
